@@ -8,6 +8,8 @@ const
 
 app.use(cors());
 
+app.set('view engine', 'ejs');
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -21,7 +23,7 @@ else {
     db.role.create({
       id: 1,
       name: "user"
-    }); 
+    });
     db.role.create({
       id: 2,
       name: "admin"
