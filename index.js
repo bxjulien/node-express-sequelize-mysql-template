@@ -8,6 +8,7 @@ const
   db = require("./models"),
   port = process.env.PORT || 5000,
   env = process.env.ENV_URL || 'http://localhost',
+  swaggerUi = require('swagger-ui-express'),
   isProduction = process.env.NODE_ENV === 'production';
 
 app.use(cors());
@@ -16,6 +17,8 @@ app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use('/api/docs', swaggerUi.serve);
 
 app.use(router);
 

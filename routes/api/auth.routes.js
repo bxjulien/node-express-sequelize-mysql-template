@@ -11,6 +11,13 @@ router.use(function (req, res, next) {
   next();
 });
 
+/** 
+ * @swagger 
+ * /register: 
+ *   post: 
+ *     description: Create an user 
+ *   
+ */  
 router.post("/register",
   [
     verifySignUp.checkDuplicateUsernameOrEmail,
@@ -19,8 +26,22 @@ router.post("/register",
   controller.register
 );
 
+/** 
+ * @swagger 
+ * /login: 
+ *   post: 
+ *     description: Connect to the application 
+ *   
+ */  
 router.post("/login", controller.login);
 
+/** 
+ * @swagger 
+ * /refreshToken: 
+ *   post: 
+ *     description: Refresh user's jwt 
+ *   
+ */ 
 router.post("/refreshToken", controller.refreshToken);
 
 module.exports = router;
