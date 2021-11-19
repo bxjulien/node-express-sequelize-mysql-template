@@ -1,8 +1,8 @@
-const 
+const
   db = require("../models"),
   secret = process.env.SECRET || 'mysecret',
-  User = db.user,
-  Role = db.role,
+  User = db.User,
+  Role = db.Role,
   Op = db.Sequelize.Op,
   jwt = require("jsonwebtoken"),
   bcrypt = require("bcryptjs");
@@ -12,7 +12,7 @@ exports.register = (req, res) => {
   User.create({
     username: req.body.username,
     email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 8)
+    password: bcrypt.hashSync(req.body.password)
   })
     .then(user => {
       if (req.body.roles) {

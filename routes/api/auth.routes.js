@@ -14,7 +14,7 @@ router.use(function (req, res, next) {
 router.post("/register",
   [
     verifySignUp.checkDuplicateUsernameOrEmail,
-    verifySignUp.checkRolesExisted
+    verifySignUp.checkIfRoleExists
   ],
   controller.register
 );

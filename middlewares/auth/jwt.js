@@ -2,7 +2,7 @@ const
   jwt = require("jsonwebtoken"),
   secret = process.env.SECRET || 'mysecret',
   db = require("../../models"),
-  User = db.user;
+  User = db.User;
 
 verifyToken = (req, res, next) => {
   let token = req.headers["x-access-token"];

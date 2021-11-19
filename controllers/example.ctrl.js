@@ -1,22 +1,16 @@
 const db = require("../models");
-const Example = db.example;
+const Example = db.Example;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
   if (!req.body.title) {
     res.status(400).send({
-      message: "Content can not be empty!"
+      message: "Content can't be empty!"
     });
     return;
   }
 
-  const example = {
-    title: req.body.title,
-    description: req.body.description,
-    isActive: req.body.isActive ? req.body.isActive : false
-  };
-
-  Example.create(example)
+  Example.create(req.body)
     .then(data => {
       res.send(data);
     })
@@ -71,7 +65,7 @@ exports.update = (req, res) => {
         });
       } else {
         res.send({
-          message: `Cannot update Example with id=${id}. Maybe Example was not found or req.body is empty!`
+          message: `Can't update Example with id=${id}. Maybe Example was not found or req.body is empty!`
         });
       }
     })
@@ -95,7 +89,7 @@ exports.delete = (req, res) => {
         });
       } else {
         res.send({
-          message: `Cannot delete Example with id=${id}. Maybe Example was not found!`
+          message: `Can't delete Example with id=${id}. Maybe Example was not found!`
         });
       }
     })

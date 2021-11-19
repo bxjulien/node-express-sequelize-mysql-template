@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const User = sequelize.define("users", {
+  const User = sequelize.define("User", {
     username: {
       type: Sequelize.STRING
     },
@@ -10,6 +10,14 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     }
   });
+
+  User.associate = (models) => {
+    User.belongsToMany(models.Role, {
+      through: "User_Role",
+      foreignKey: "userId",
+      otherKey: "roleId"
+    });
+  }
 
   return User;
 };
