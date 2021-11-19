@@ -21,4 +21,6 @@ router.post("/register",
 
 router.post("/login", controller.login);
 
+router.post("/refreshToken", controller.refreshToken);
+
 module.exports = router;

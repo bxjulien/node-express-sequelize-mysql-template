@@ -10,7 +10,6 @@ const
   env = process.env.ENV_URL || 'http://localhost',
   isProduction = process.env.NODE_ENV === 'production';
 
-
 app.use(cors());
 
 app.set('view engine', 'ejs');

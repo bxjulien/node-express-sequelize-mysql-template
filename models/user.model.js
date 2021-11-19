@@ -1,4 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
+
   const User = sequelize.define("User", {
     username: {
       type: Sequelize.STRING
@@ -17,6 +18,10 @@ module.exports = (sequelize, Sequelize) => {
       foreignKey: "userId",
       otherKey: "roleId"
     });
+    User.hasOne(models.RefreshToken, {
+      foreignKey: 'userId', 
+      targetKey: 'id'
+    })
   }
 
   return User;

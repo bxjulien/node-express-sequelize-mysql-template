@@ -1,6 +1,6 @@
-const 
+const
   jwt = require("jsonwebtoken"),
-  secret = process.env.SECRET || 'mysecret',
+  config = require("../../config/auth.config"),
   db = require("../../models"),
   User = db.User;
 
@@ -9,14 +9,14 @@ verifyToken = (req, res, next) => {
 
   if (!token) {
     return res.status(403).send({
-      message: "No token provided!"
+      message: "No token provided !"
     });
   }
 
-  jwt.verify(token, secret, (err, decoded) => {
+  jwt.verify(token, config.secret, (err, decoded) => {
     if (err) {
       return res.status(401).send({
-        message: "Unauthorized!"
+        message: `Unauthorized ! ${err instanceof jwt.TokenExpiredError ? 'Access Token was expired !' : ''}`
       });
     }
     req.id = decoded.id;

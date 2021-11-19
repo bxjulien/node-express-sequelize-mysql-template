@@ -11,6 +11,6 @@ module.exports = function (db) {
     }).then(() => {
         console.log('\n Database Seeds Inserted ( ◠﹏◠ ) \n');
     }).catch(() => {
-        console.log('\n Database Seeds Error ( ◠﹏◠ ) \n');
+        console.log('\n Database Seeds Error (⊙.☉)7 \n');
     })
 }
